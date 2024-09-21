@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Header from './components/Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './pages/Home';
+import AddTeamMember from './pages/AddTeamMember';
+import ViewAllMembers from './pages/ViewAllMembers';
+import ViewAllMember from './pages/ViewMember';
 
-function App() {
+const App = () => {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header/>
+      <div>
+        {/* <nav>
+          <a className="nav-item nav-link" href="/">Home</a>
+          <a className="nav-item nav-link" href="/add-member">Add Member</a>
+        </nav> */}
+        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add-member" element={<AddTeamMember />} />
+          <Route path="/view-members" element={<ViewAllMembers />} />
+          <Route path="/view-member/:id" element={<ViewAllMember />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </div>
+  </Router>
   );
-}
+};
+
 
 export default App;
